@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Author } from '../author/author.entity';
+import { BorrowedBook } from '../borrowed-book/borrowed-book.entity';
 
 @Entity()
 export class Book {
@@ -14,5 +15,7 @@ export class Book {
 
   @ManyToOne(() => Author, (author) => author.books)
   author: Author;
+
+  @ManyToOne(() => BorrowedBook, (borrowedBook) => borrowedBook.book)
   borrowedBooks: any;
 }
